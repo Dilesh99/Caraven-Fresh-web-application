@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Card, CardContent, CardFooter } from '../components/ui/card'
 import { Button } from '../components/ui/button'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useCart } from '../components/context/CartContext'
 
 const topProducts = [
   { name: 'Chocolate Cake', price: '$25', image: '/choc.jpg' },
@@ -17,13 +18,14 @@ const topProducts = [
 
 export default function TopProducts() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const { addToCart } = useCart()
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % (topProducts.length/3))
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % (topProducts.length / 3))
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + topProducts.length) % (topProducts.length/3))
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + topProducts.length) % (topProducts.length / 3))
   }
 
   return (
@@ -48,7 +50,9 @@ export default function TopProducts() {
                       <p className="text-primary text-center">{product.price}</p>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full">Add to Cart</Button>
+                      <Button className="w-full" onClick={() => addToCart(product)}>
+                        Add to Cart
+                      </Button>
                     </CardFooter>
                   </Card>
                 </div>

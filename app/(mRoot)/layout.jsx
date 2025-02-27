@@ -4,6 +4,8 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { SessionProvider } from 'next-auth/react'
 {/*import { Toaster } from '@/@/components/ui/toaster'*/}
+import {CartProvider} from "../components/context/CartContext"
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,10 +18,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} flex flex-col min-h-screen`}>
+        <CartProvider>
         <SessionProvider>
-          <Navbar />
+          <Navbar/>
         </SessionProvider>
         <main className="flex-grow">{children}</main>
+        </CartProvider>
         <Footer />
       </body>
     </html>

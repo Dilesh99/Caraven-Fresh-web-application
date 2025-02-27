@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs'
-import { Card, CardContent } from '../components/ui/card'
+import { Card, CardContent, CardFooter } from '../components/ui/card'
 import Image from 'next/image'
+import { useCart } from '../components/context/CartContext'
+import { Button } from '../components/ui/button'
 
 const categories = ['Cakes', 'Pastries', 'Cookies', 'Breads']
 
@@ -35,7 +37,8 @@ const products = {
 }
 
 export default function ExploreMore() {
-  const [activeCategory, setActiveCategory] = useState('Cakes')
+  const [activeCategory, setActiveCategory] = useState('Cakes');
+  const { addToCart } = useCart();
 
   return (
     <section className="py-16">
@@ -64,6 +67,11 @@ export default function ExploreMore() {
                       <h3 className="text-lg font-semibold text-center">{product.name}</h3>
                       <p className="text-primary text-center">{product.price}</p>
                     </CardContent>
+                    <CardFooter>
+                      <Button className="w-full" onClick={() => addToCart(product)}>
+                        Add to Cart
+                      </Button>
+                    </CardFooter>
                   </Card>
                 ))}
               </div>
