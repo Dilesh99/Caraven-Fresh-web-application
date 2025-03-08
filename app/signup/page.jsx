@@ -51,7 +51,7 @@ export default function SignUpPage() {
 
   function onSubmit(values) {
     setIsLoading(true)
-    // Here you would typically handle the sign-up logic
+    // Here you would typically handle the sign-up logic for the sign-up page
     console.log(values)
     // Simulating an API call
     setTimeout(() => {

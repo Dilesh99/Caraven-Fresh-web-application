@@ -42,7 +42,7 @@ export default function LoginPage() {
 
   function onSubmit(values) {
     setIsLoading(true)
-    // Here you would typically handle the login logic
+    // Here you would typically handle the login logic for the login page
     console.log(values)
     // Simulating an API call
     setTimeout(() => {
