@@ -5,24 +5,27 @@ import Image from 'next/image'
 import { Card, CardContent, CardFooter } from '../components/ui/card'
 import { Button } from '../components/ui/button'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useCart } from '../components/context/CartContext'
 
 const topProducts = [
-  { name: 'Chocolate Cake', price: '$25', image: '/placeholder.svg?height=300&width=300' },
-  { name: 'Strawberry Tart', price: '$15', image: '/placeholder.svg?height=300&width=300' },
-  { name: 'Blueberry Muffin', price: '$5', image: '/placeholder.svg?height=300&width=300' },
-  { name: 'Apple Pie', price: '$20', image: '/placeholder.svg?height=300&width=300' },
-  { name: 'Croissant', price: '$3', image: '/placeholder.svg?height=300&width=300' },
+  { name: 'Chocolate Cake', price: '$25', image: '/choc.jpg' },
+  { name: 'Strawberry Tart', price: '$15', image: '/tart.jpg' },
+  { name: 'Blueberry Muffin', price: '$5', image: '/muffin.jpg' },
+  { name: 'Apple Pie', price: '$20', image: '/pie.jpg' },
+  { name: 'Croissant', price: '$3', image: '/Croissant.jpg' },
+  { name: 'dsfgdsf', price: '$15', image: '/tart.jpg' }
 ]
 
 export default function TopProducts() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const { addToCart } = useCart()
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % topProducts.length)
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % (topProducts.length / 3))
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + topProducts.length) % topProducts.length)
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + topProducts.length) % (topProducts.length / 3))
   }
 
   return (
@@ -39,15 +42,17 @@ export default function TopProducts() {
           <div className="overflow-hidden">
             <div className="flex transition-transform duration-300 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
               {topProducts.map((product, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-4">
+                <div key={index} className="w-1/3 flex-shrink-0 px-4">
                   <Card>
                     <CardContent className="p-4">
-                      <Image src={product.image} alt={product.name} width={300} height={300} className="rounded-lg mb-4 mx-auto" />
+                      <Image src={product.image} alt={product.name} width={500} height={300} className="rounded-lg mb-4 mx-auto" />
                       <h3 className="text-xl font-semibold text-center">{product.name}</h3>
                       <p className="text-primary text-center">{product.price}</p>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full">Add to Cart</Button>
+                      <Button className="w-full" onClick={() => addToCart(product)}>
+                        Add to Cart
+                      </Button>
                     </CardFooter>
                   </Card>
                 </div>
@@ -59,4 +64,3 @@ export default function TopProducts() {
     </section>
   )
 }
-

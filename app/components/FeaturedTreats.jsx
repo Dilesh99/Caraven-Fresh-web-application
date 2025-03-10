@@ -2,9 +2,9 @@ import Image from 'next/image'
 import { Card, CardContent } from '../components/ui/card'
 
 const featuredTreats = [
-  { name: 'Birthday Cake', description: 'Customizable celebration cake', image: '/placeholder.svg?height=300&width=300' },
-  { name: 'Macarons', description: 'Assorted flavors', image: '/placeholder.svg?height=300&width=300' },
-  { name: 'Fruit Tart', description: 'Fresh seasonal fruits', image: '/placeholder.svg?height=300&width=300' },
+  { name: 'Birthday Cake', description: 'Customizable celebration cake', image: '/fav/bdaycake.jpg' },
+  { name: 'Macarons', description: 'Assorted flavors', image: '/fav/maca.jpg' },
+  { name: 'Fruit Tart', description: 'Fresh seasonal fruits', image: '/fav/tart_s.jpg' },
 ]
 
 export default function FeaturedTreats() {
