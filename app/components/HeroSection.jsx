@@ -6,7 +6,7 @@ const images = [
   "/bg1.jpg",
   "/bg2.jpg",
   "/bg3.jpg",
-]; // Ensure these paths are correct in your Next.js public folder
+];
 
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,7 +26,7 @@ export default function HeroSection() {
 
         return nextIndex;
       });
-    }, 5000); // Change image every 5 seconds
+    }, 5000); // Change images every 5 seconds
 
     return () => clearInterval(interval);
   }, [direction]);
