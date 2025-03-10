@@ -6,7 +6,7 @@ import FeaturedTreats from './components/FeaturedTreats'
 
 export default function Home() {
   return (
-    <>{/**all components is displayed*/}
+    <>{/**all c*/}
       <HeroSection />
       <TopProducts />
       <ExploreMore />
